@@ -24,8 +24,6 @@ class ViewController: UIViewController {
     private let lightIsOn: CGFloat = 1
     private var curentLight = CurrentLight.red
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +35,8 @@ class ViewController: UIViewController {
         yellowLight.alpha = lightIsOff
         greenLight.alpha = lightIsOff
         
-        
         startButton.layer.cornerRadius = 10
     }
-    
     
     @IBAction func startButtonTapped() {
         
