@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum CurrentLight {
-    case red
-    case yellow
-    case green
-}
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var redLight: UIView!
@@ -20,9 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenLight: UIView!
     @IBOutlet weak var startButton: UIButton!
     
+    private var isRedLightOn = false
+    private var isYellowLightOn = false
+    private var isGreenLightOn = false
+    
     private let lightIsOff: CGFloat = 0.3
     private let lightIsOn: CGFloat = 1
-    private var curentLight = CurrentLight.red
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +39,23 @@ class ViewController: UIViewController {
         
         startButton.setTitle("NEXT", for: .normal)
         
-        switch curentLight {
-        case .red:
-            redLight.alpha = lightIsOn
+        if !isRedLightOn && !isYellowLightOn && !isGreenLightOn || isGreenLightOn  {
             greenLight.alpha = lightIsOff
-            curentLight = .yellow
-        case .yellow:
-            yellowLight.alpha = lightIsOn
+            redLight.alpha = lightIsOn
+            isGreenLightOn = false
+            isRedLightOn = true
+            
+        } else if isRedLightOn {
             redLight.alpha = lightIsOff
-            curentLight = .green
-        case .green:
+            yellowLight.alpha = lightIsOn
+            isRedLightOn = false
+            isYellowLightOn = true
+            
+        } else if isYellowLightOn {
             yellowLight.alpha = lightIsOff
             greenLight.alpha = lightIsOn
-            curentLight = .red
+            isYellowLightOn = false
+            isGreenLightOn = true
         }
     }
 }
