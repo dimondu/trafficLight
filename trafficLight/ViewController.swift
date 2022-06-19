@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenLight: UIView!
     @IBOutlet weak var startButton: UIButton!
     
-    private let lightIsOff: CGFloat = 0.4
+    private let lightIsOff: CGFloat = 0.3
     private let lightIsOn: CGFloat = 1
     private var curentLight = CurrentLight.red
     
@@ -29,9 +29,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redLight.layer.cornerRadius = 60
-        yellowLight.layer.cornerRadius = 60
-        greenLight.layer.cornerRadius = 60
+        redLight.layer.cornerRadius = redLight.frame.width / 2
+        yellowLight.layer.cornerRadius = redLight.frame.width / 2
+        greenLight.layer.cornerRadius = redLight.frame.width / 2
         
         redLight.alpha = lightIsOff
         yellowLight.alpha = lightIsOff
